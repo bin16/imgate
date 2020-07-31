@@ -116,5 +116,10 @@ func main() {
 		c.Writer.Write(imgWebp)
 	})
 
+	r.GET("/favicon.ico", func(c *gin.Context) {
+		c.Header("Cache-Control", "public, max-age: 63072000")
+		c.File("favicon.ico")
+	})
+
 	r.Run(":2222")
 }
